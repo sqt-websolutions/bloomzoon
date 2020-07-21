@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+entity=$1
+table_name=$2
+php artisan make:model ${entity}
+php artisan make:migration create_${table_name}_table --create=${table_name}
+php artisan make:request ${entity}
