@@ -6,7 +6,7 @@
     <title>Bloomzon - @yield('page_title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="csrf-token" content="{{ Session::token() }}"> 
     <link rel="manifest" href="site">
     <link rel="apple-touch-icon" href="icon">
     <!-- Place favicon.ico in the root directory -->
@@ -57,25 +57,11 @@
 <![endif]-->
 @php
 $adverts = \App\Advert::all();
-@endphp
-
-@php
-    $categories = \Illuminate\Support\Facades\DB::table('categories as pc')
-                           ->leftJoin('sub_categories as sc', 'pc.id', '=', 'sc.id')
-                           ->select('pc.id as parent_id', 'pc.name as parent_name', 'sc.id as child_id', 'sc.name as child_name')
-                           ->get();
-
-    $transformedCategories = [];
-    foreach ($categories as $category){
-        if(!empty($transformedCategories[$category->parent_name])){
-            $transformedCategories[$category->parent_name] = [];
-        }
-        $transformedCategories[$category->parent_name][] = $category->child_name;
-    }
-
+$categories = \App\Category::all();
 @endphp
 
 <!--header-area start-->
+
 <header class="header-area">
     <div class="desktop-header">
         <!--header-top-->
@@ -116,6 +102,7 @@ $adverts = \App\Advert::all();
             </div>
         </div>
         <!--header-bottom-->
+        
         @php($categories = \App\Category::all())
         <div class="sticker header-bottom" style="background-color: #aa1607 !important; color: #fff;">
             <div class="container-fluid mr-5 ml-5 pr-5 pl-5">
@@ -154,11 +141,11 @@ $adverts = \App\Advert::all();
                             <button type="button" class="badge btn btn-outline-light mr-2">Track Delivery</button>
                             <a href="cart" class="btn btn-success mr-2"> <span class="text-white">My Cart </span><i class="fa fa-lg fa-shopping-cart text-light"> {{ json_decode(\Illuminate\Support\Facades\Redis::get('cart'), true) ? ( count( json_decode(\Illuminate\Support\Facades\Redis::get('cart'), true)) ) : ''}} </i></a>
                            @if(Auth::user())
-                                <a href="logout" class="text-white mr-2"><i class="fa fa-lg fa-sign-out text-light"></i> Logout</a>
+                                <a href="/logout" class="text-white mr-2"><i class="fa fa-lg fa-sign-out text-light"></i> Logout</a>
                                 <a href="/home" class="text-white mr-2"><i class="fa fa-lg fa-dashboard text-light"></i> My Account </a>
                             @else
                                 <a href="register" class="text-white mr-2"><i class="fa fa-lg fa-registered text-light"></i> Register</a>
-                                <a href="login" class="text-white mr-2"><i class="fa fa-lg fa-sign-in text-light"></i> Login</a>
+                                <a href="/login" class="text-white mr-2"><i class="fa fa-lg fa-sign-in text-light"></i> Login</a>
                                @endif
                         </div>
                     </div>
@@ -179,17 +166,17 @@ $adverts = \App\Advert::all();
                                     </a>
 
                                     <ul class="vm-dropdown" style="display: none; width: 50% !important; left: 25% !important; text-align: left;">
-                                        @foreach($transformedCategories as $category => $children)
+                                        @foreach($categories as $category)
                                         <li style="padding: 8px !important;">
-                                            <a href="/category/{{$category}}">{{$category}}</a>
-                                            @if(!empty($children))
+                                            <a href="/category/{{$category}}">{{$category->name}}</a>
+                                            @if(!empty($category->sub_categories))
                                             <ul class="mega-menu">
                                                 <li class="megamenu-single">
                                                     <span class="mega-menu-title">Sub-Category</span>
                                                     <ul>
-                                                        @foreach($children as $child)
+                                                        @foreach($category->sub_categories as $child)
                                                             @if($child)
-                                                                <li><a href="/category/{{$child}}">{{$child}}</a></li>
+                                                                <li><a href="/category/{{$child->name}}">{{$child->name}}</a></li>
                                                             @endif
                                                         @endforeach
                                                     </ul>
@@ -199,7 +186,7 @@ $adverts = \App\Advert::all();
                                         </li>
                                         @endforeach
 
-{{--                                        @foreach($transformedCategories as $category => $children)--}}
+<!-- {{--                                        @foreach($transformedCategories as $category => $children)--}}
 {{--                                            <li style="padding: 8px !important;"><a href="/category/{{$category}}">{{$category}}</a>--}}
 {{--                                                @if(!empty($children))--}}
 {{--                                                    <ul class="mega-menu">--}}
@@ -214,7 +201,7 @@ $adverts = \App\Advert::all();
 {{--                                                @endif--}}
 {{--                                            </li>--}}
 
-{{--                                        @endforeach--}}
+{{--                                        @endforeach--}} -->
 
                                     </ul>
                                 </li>
@@ -472,11 +459,11 @@ $adverts = \App\Advert::all();
     </div>
 </footer>
 <!--footer-area end-->
-
+<script src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
 <!-- modernizr js -->
 <script src="{{asset('assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
 <!-- jquery-3.3.1 version -->
-<script src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
+
 
 <script src="{{asset('assets/js/popper.min.js')}}"></script>
 <!-- bootstra.min js -->
@@ -490,7 +477,7 @@ $adverts = \App\Advert::all();
 <!---letteranimation-js-->
 <script src="{{asset('assets/js/letteranimation.min.js')}}"></script>
 <!-- jquery-ui js -->
-<script src="{{asset('assets/js/jquery-ui.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery-ui.mi.js')}}"></script>
 <!-- jquery.countdown js -->
 <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
 <!-- venobox js -->

@@ -1,4 +1,15 @@
 <?php return array (
+  'danielme85/laravel-cconverter' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'danielme85\\CConverter\\CConverterServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Currency' => 'danielme85\\CConverter\\CConverter',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 

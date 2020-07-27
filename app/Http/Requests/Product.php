@@ -28,7 +28,6 @@ class Product extends FormRequest
             'product_description'=> 'required|string',
             'product_meta' => 'string',
             'category_id'=> 'integer',
-            'featured_img_url' => 'string',
             'stock_level' => 'string',
             'product_price' => 'required|string',
             'product_sales_price'=> 'string',

@@ -21,11 +21,11 @@
 									<select class="form-control" name="account_type">
 										<option value="buyer">Buyer</option>
 										<option value="seller">Seller</option>
-										<option value="fast-food-groceries">Fast Food & Vendor</option>
-										<option value="fast-food-groceries">Groceries Seller</option>
-										<option value="networking-agent">Networking Agent</option>
+										<!-- <option value="grocery">Fast Food & Vendor</option> -->
+										<option value="grocery">Groceries Seller</option>
+										<option value="networkingAgent">Networking Agent</option>
                                         <option value="manufacturer">Manufacturer</option>
-										<option value="professional-service">Professional Service</option>
+										<option value="professionalService">Professional Service</option>
 									</select>
 								</div>
 							</div>

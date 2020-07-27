@@ -15,10 +15,11 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('terms_and_conditions');
-            $table->mediumText('policy');
-            $table->mediumText('delivery_terms');
-            $table->mediumText('terms_of_purchase');
+            $table->string('company_name');
+            $table->mediumText('terms_and_conditions')->nullable();
+            $table->mediumText('policy')->nullable();
+            $table->mediumText('delivery_terms')->nullable();
+            $table->mediumText('terms_of_purchase')->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
         });

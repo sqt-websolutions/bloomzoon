@@ -3,6 +3,9 @@
     SubAdmin Dashboard - Add Category
 @endsection
 
+@php
+        $categories = \Illuminate\Support\Facades\DB::table('categories')->get();
+@endphp
         @section('content')
         <div class="col-md-10">
             <div class="row align-items-center mt-5 pt-5">
@@ -33,8 +36,8 @@
 
                 <div class="col-md-6 offset-3">
                     <form name="AddCategoryForm">
-
-                    @if(count($categories))
+                      
+                    @if(isset($categories) && count($categories))
 
                                 <div class="form-group mb-5 mt-5">
                                     <label for="category" style="color: #02499B;"><strong>Select Parent Category</strong></label>
@@ -108,6 +111,6 @@
             }
         });
 
-        FormHandler('AddCategoryForm', options)
+        FormHanler('AddCategoryForm', options)
     </script>
 @endpush

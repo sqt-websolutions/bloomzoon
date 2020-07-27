@@ -2,6 +2,10 @@
 @section('page_title')
     Manufacturer - Home
 @endsection
+
+@php
+return var_dump($user_metas);
+@endphp
         @section('content')
         <div class="col-md-10" style="padding: 20px;">
             <br>

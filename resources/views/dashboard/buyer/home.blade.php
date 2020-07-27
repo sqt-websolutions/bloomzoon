@@ -2,15 +2,17 @@
 @section('page_title')
     Buyer's Dashboard
 @endsection
-
+@php 
+    $orders = \App\Order::where('buyer_id',Auth::user()->id)->get();
+@endphp
         @section('content')
         <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <a href="purchase-history">
                             <div class="card text-center" style="color: #02499B; background-color: white; padding: 30px;">
-                                <h3><b><i class="fas fa-paste"></i> TOTAL ORDERS</b></h3>
-                                    <h2 style="font-size: 70px;">{{count($user_metas->Order)}}</h2>
+                                <h3><b><i class="fas fa-paste"></i> TOTAL ORDERS </b></h3>
+                                    <h2 style="font-size: 70px;">{{count($orders)}}</h2>
                                         <p style="color: crimson; font-size: 16px">Track, Return or Buy product again</p>
                             </div>
                         </a>

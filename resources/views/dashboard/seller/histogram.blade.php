@@ -7,6 +7,7 @@
             <div class="row col-md-12 text-center" style="border-bottom: 1px solid #f2f2f2;">
                     <h1 class="text-center m-auto pt-3 pb-3 "><b>Orders</b></h1>
                 </div>
+                {{ var_dump(count($user_metas->Order)) }}
             @if(count($orders = $user_metas->Order))
             <div class="panel panel-white">
                 <div class="panel-body">

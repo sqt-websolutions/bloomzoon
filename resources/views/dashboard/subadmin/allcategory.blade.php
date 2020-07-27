@@ -3,7 +3,10 @@
     Sub Admin's Dashboard - All Categories
 @endsection
 @php
-
+$categories = \Illuminate\Support\Facades\DB::table('categories as pc')
+                               ->leftJoin('sub_categories as sc', 'pc.id', '=', 'sc.id')
+                               ->select('pc.id as parent_id', 'pc.name as parent_name', 'sc.id as child_id', 'sc.name as child_name')
+                               ->get();
 @endphp
         @section('content')
         <div class="col-md-10">

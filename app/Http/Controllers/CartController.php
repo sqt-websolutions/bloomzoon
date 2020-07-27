@@ -26,7 +26,8 @@ class CartController extends Controller
                     'seller_id' => $product->user_id->id,
                     'price' => $product->product_price,
                     'image' => $product->featured_img_url,
-                    'total' => +$data->quantity *  $product->product_price
+                    'total' => +$data->quantity *  $product->product_price,
+                    'product_id'=> $data->product_id
                 ];
 
                 Redis::set('cart', json_encode($cart));

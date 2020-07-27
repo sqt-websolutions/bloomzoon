@@ -194,7 +194,7 @@
                                                 <!-- <a href="#"><img src="assets/img/g1.jpeg" alt="" /></a> -->
                                             </div>
                                             <div class="product-title text-white pull-right" style="background-color: #bd1a09; padding: 10px; bottom: 0; right: 0; position: absolute; margin-bottom: -20px; ">
-                                                <h4><a href="#" style="color: #fff !important;">{{$grocery->name}}</a></h4>
+                                                <h4><a href="#" style="color: #fff !important;">{{$grocery->company_name}}</a></h4>
                                             </div>
                                         </div>
                                     @endforeach

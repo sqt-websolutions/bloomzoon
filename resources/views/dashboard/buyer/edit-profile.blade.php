@@ -4,11 +4,13 @@
 @endsection
         @section('content')
         <div class="col-md-10">
-                <div class="row mb-3 " style="background-color: #000 !important; padding: 100px; ">
+                <div class="row mb-3 " style=" padding: 100px; ">
                     <div class="col-md-6 p-5 offset-3">
+                       <div class="card shadow">
+                           <div class="card-body"> 
                         <form name="updateProfile" id="updateProfile">
                             <div class="form-group text-center ">
-                                <img src="{{asset($user_metas->User[0]->profile_pic_url)}}" class="img img-circle " width="120 " height="120 ">
+                                <img src="{{asset($user_metas->User[0]->profile_pic_url)}}" class="img img-circle " width="100 " height="100 ">
                             </div>
 
                             <div class="form-group ">
@@ -18,7 +20,7 @@
                             <input type="hidden" name="_method" value="put">
                             <div class="form-group ">
                                 <label for="exampleFormControlInput1 " style="font-size: 16px; color: #fff; font-weight: 500; ">Phone number</label><br>
-                                <input type="email " class="form-control" value="{{$user_metas->User[0]->name}}" name="phone" id="phone " placeholder="0000000000 " style="height: 40px; ">
+                                <input type="email " class="form-control" value="{{$user_metas->User[0]->phone}}" name="phone" id="phone " placeholder="0000000000 " style="height: 40px; ">
                             </div>
                             <div class="form-group ">
                                 <label for="exampleFormControlInput1 " style="font-size: 16px; color: #fff; font-weight: 500; ">Email</label><br>
@@ -36,8 +38,9 @@
                                 <button class="btn btn-danger btn-lg" type="submit">Save</button>
                             </div>
                         </form>
+                           </div>
                     </div>
-
+                   </div>
                 </div>
             </div>
         @endsection
@@ -45,7 +48,7 @@
     <script>
         FormHandler('updateProfile', {
             requestUrl:'/api/v1/crud/users/{{Auth::user()->id}}',
-            cb: response => {
+            cb: function(response){
                 if(response.success){
                     return swal({
                         title: 'Success!',

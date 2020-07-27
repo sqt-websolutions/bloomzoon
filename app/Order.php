@@ -12,14 +12,22 @@ class Order extends Model
         return User::find($userId);
     }
 
-    public function getIdAttribute($id): array
-    {
-        return ['order_id' => $id, 'order_details' => OrderDetail::where('order_id', '=', $id)->get()];
+    public function getBuyerIdAttribute($userId){
+        return User::find($userId);
     }
+
+    // public function getIdAttribute($id): array
+    // {
+    //     return ['order_id' => $id, 'order_details' => OrderDetail::where('order_id', '=', $id)->get()];
+    // }
 
     public function getDeliveryAgentIdAttribute($Id)
     {
         return User::find($Id);
+    }
+
+    public function product(){
+        return $this->belongsTo('App\Product','product_id','id');
     }
 
 

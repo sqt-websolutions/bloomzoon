@@ -21,6 +21,7 @@ Route::group(['prefix' =>'/v1', 'middleware' => ['jwt.verify']], static function
 Route::group(['prefix' =>'/v1'], static function(){
 
     /** crud endpoints */
+    Route::post('orders/store','CrudResourceController@store_orders');
     Route::post('crud/{entity}', 'CrudResourceController@store');
     Route::get('crud/{entity}', 'CrudResourceController@index');
     Route::get('crud/{entity}/{id}', 'CrudResourceController@show');

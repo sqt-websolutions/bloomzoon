@@ -142,6 +142,13 @@
                         <a  href="createnewuser">Create New User</a>
                         <a href="allusers?users={{base64_encode(json_encode('users'))}}">All Users</a>
                     </div>
+                    <button class="dropdown-btn"><i class="fas fa-user-cog mr-3"></i> Brands Management
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container1">
+                        <a  href="createnewbrand">Create New Brand</a>
+                        <a href="allusers?users={{base64_encode(json_encode('brands'))}}">All Brands</a>
+                    </div>
                     <a href="review"><i class="fas fa-comments mr-3"></i> Review/Feedback</a>
                     <a href="messages"><i class="fas fa-envelope  mr-3"></i> Messages</a>
                     <a href="bloomzonproduct"><i class="fas fa-shopping-cart  mr-3"></i> Bloomzon Products</a>

@@ -1,5 +1,24 @@
 async function makeRequest(requestUrl='', reqData) {
-    return (await axios.post(requestUrl, reqData).catch(err => swal({text: 'Error Performing action', title: 'Error', icon:'error'}))).data;
+   var result = axios.post(requestUrl, reqData).then(function(res){ 
+       
+        return res.data;
+    },(error)=>{
+        if (error.response) {
+            // Request made and server responded
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+    })
+return result;
+
+        
 }
 
 const inputFileElements = document.querySelectorAll('input[type=file]');
@@ -26,9 +45,15 @@ const FormHandler =  (form,options) => {
                 formData.append(formInput.name, formInput.value);
             }
         });
-
+        
         if( options.requestUrl ) {
-            const response = await makeRequest( options.requestUrl, formData );
+            
+            let response = await makeRequest( options.requestUrl, formData );
+
+            console.log(response);
+            if(response == null){
+                response = {}
+            }
             options.cb(response)
         }
     })

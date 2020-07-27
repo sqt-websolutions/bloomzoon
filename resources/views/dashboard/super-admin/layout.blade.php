@@ -174,7 +174,7 @@
                         <a class="dropdown-item" href="all?account_type={{base64_encode(json_encode('delivery-merchant'))}}">Delivery Merchants</a>
                         <a class="dropdown-item" href="all?account_type={{base64_encode(json_encode('professional-service'))}}">Professional Service</a>
                         <a class="dropdown-item" href="all?account_type={{base64_encode(json_encode('subadmin'))}}">Sub Admin</a>
-                        <a class="dropdown-item" href="all?account_type={{base64_encode(json_encode('fast-food-groceries'))}}">Fast Food &amp; Groceries</a>
+                        <a class="dropdown-item" href="all?account_type={{base64_encode(json_encode('grocery'))}}">Fast Food &amp; Groceries</a>
                         <a class="dropdown-item" href="all?account_type={{base64_encode(json_encode('manufacturer'))}}">Manufacturers</a>
                     </div>
                     <a href="account_sales_statements"><i class="fas fa-clipboard-list"></i> Account Sales Statements</a>

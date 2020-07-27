@@ -2,6 +2,7 @@
 
 @section('content')
 @php
+    
     $products = \App\Product::where('user_id', '=', $manufacturer->id)->get();
 @endphp
     <div class="mm-page mm-slideout" id="mm-0"><div class="product-details-area mt-20">
@@ -10,29 +11,29 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-1">
                             <ul class="nav nav-tabs products-nav-tabs">
-                                <li><a class="active" data-toggle="tab" href="#product-1"><img src="{{asset($manufacturer->factory_image_url)}}" alt=""></a></li>
-                                <li><a data-toggle="tab" href="#product-2"><img src="{{asset($manufacturer->factory_image_url)}}" alt=""></a></li>
-                                <li><a data-toggle="tab" href="#product-3"><img src="{{asset($manufacturer->factory_image_url)}}" alt=""></a></li>
+                                <li><a class="active" data-toggle="tab" href="#product-1"><img src="{{asset($manufacturer->profile_pic_url)}}" alt=""></a></li>
+                                <li><a data-toggle="tab" href="#product-2"><img src="{{asset($manufacturer->profile_pic_url)}}" alt=""></a></li>
+                                <li><a data-toggle="tab" href="#product-3"><img src="{{asset($manufacturer->profile_pic_url)}}" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 col-md-7">
                             <div class="tab-content">
                                 <div id="product-1" class="tab-pane fade in show active">
                                     <div class="product-details-thumb">
-                                        <a class="venobox vbox-item" data-gall="myGallery" href="{{asset($manufacturer->factory_image_url)}}"><i class="fa fa-search-plus"></i></a>
-                                        <img src="{{asset($manufacturer->factory_image_url)}}" alt="">
+                                        <a class="venobox vbox-item" data-gall="myGallery" href="{{asset($manufacturer->profile_pic_url)}}"><i class="fa fa-search-plus"></i></a>
+                                        <img src="{{asset($manufacturer->profile_pic_url)}}" alt="">
                                     </div>
                                 </div>
                                 <div id="product-2" class="tab-pane fade">
                                     <div class="product-details-thumb">
-                                        <a class="venobox vbox-item" data-gall="myGallery" href="{{asset($manufacturer->factory_image_url)}}"><i class="fa fa-search-plus"></i></a>
-                                        <img src="{{asset($manufacturer->factory_image_url)}}" alt="">
+                                        <a class="venobox vbox-item" data-gall="myGallery" href="{{asset($manufacturer->profile_pic_url)}}"><i class="fa fa-search-plus"></i></a>
+                                        <img src="{{asset($manufacturer->profile_pic_url)}}" alt="">
                                     </div>
                                 </div>
                                 <div id="product-3" class="tab-pane fade">
                                     <div class="product-details-thumb">
-                                        <a class="venobox vbox-item" data-gall="myGallery" href="{{asset($manufacturer->factory_image_url)}}"><i class="fa fa-search-plus"></i></a>
-                                        <img src="{{asset($manufacturer->factory_image_url)}}" alt="">
+                                        <a class="venobox vbox-item" data-gall="myGallery" href="{{asset($manufacturer->profile_pic_url)}}"><i class="fa fa-search-plus"></i></a>
+                                        <img src="{{asset($manufacturer->profile_pic_url)}}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +103,7 @@
                                                             <h4><a href="#">{{$product->product_description}}</a></h4>
                                                         </div>
                                                         <div class="product-thumb">
-                                                            <a href="#"><img src="{{$product->featured_img_url}}" alt="" /></a>
+                                                            <a href="#"><img src="{{$product->profile_pic_url}}" alt="" /></a>
 {{--                                                            <div class="downsale"><span>-</span>$35</div>--}}
                                                             <div class="product-quick-view">
                                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#quick-view{{$product->id}}" tabindex="0">quick view</a>
@@ -143,24 +144,24 @@
                                                                         <div class="tab-content">
                                                                             <div id="product-1" class="tab-pane fade in show active">
                                                                                 <div class="product-details-thumb">
-                                                                                    <img src="{{asset($manufacturer->factory_image_url)}}" alt="" />
+                                                                                    <img src="{{asset($manufacturer->profile_pic_url)}}" alt="" />
                                                                                 </div>
                                                                             </div>
                                                                             <div id="product-2" class="tab-pane fade">
                                                                                 <div class="product-details-thumb">
-                                                                                    <img src="{{asset($manufacturer->factory_image_url)}}" alt="" />
+                                                                                    <img src="{{asset($manufacturer->profile_pic_url)}}" alt="" />
                                                                                 </div>
                                                                             </div>
                                                                             <div id="product-3" class="tab-pane fade">
                                                                                 <div class="product-details-thumb">
-                                                                                    <img src="{{asset($manufacturer->factory_image_url)}}" alt="" />
+                                                                                    <img src="{{asset($manufacturer->profile_pic_url)}}" alt="" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <ul class="nav nav-tabs products-nav-tabs horizontal quick-view mt-10">
-                                                                            <li><a class="active" data-toggle="tab" href="#product-1"><img src="{{asset($manufacturer->factory_image_url)}}" alt="" /></a></li>
-                                                                            <li><a data-toggle="tab" href="#product-2"><img src="{{asset($manufacturer->factory_image_url)}}" alt="" /></a></li>
-                                                                            <li><a data-toggle="tab" href="#product-3"><img src="{{asset($manufacturer->factory_image_url)}}" alt="" /></a></li>
+                                                                            <li><a class="active" data-toggle="tab" href="#product-1"><img src="{{asset($manufacturer->profile_pic_url)}}" alt="" /></a></li>
+                                                                            <li><a data-toggle="tab" href="#product-2"><img src="{{asset($manufacturer->profile_pic_url)}}" alt="" /></a></li>
+                                                                            <li><a data-toggle="tab" href="#product-3"><img src="{{asset($manufacturer->profile_pic_url)}}" alt="" /></a></li>
                                                                         </ul>
                                                                     </div>
                                                                     <div class="col-lg-8">
