@@ -39,7 +39,7 @@ $plans_map = [];
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlInput1" style="font-size: 16px;;">Amount: </label>
-                                <input type="text" class="form-control" disabled value="{{$plans[0]->name}}" id="amount" name="amount" placeholder="" style="height: 40px; border-radius: 0;">
+                                <input type="text" class="form-control" disabled value="{{count($plans) > 0?$plans[0]->name:null}}" id="amount" name="amount" placeholder="" style="height: 40px; border-radius: 0;">
                             </div>
 
                             <div class="form-group text-center">
@@ -66,7 +66,7 @@ $plans_map = [];
             payWithPayStack({
                 email: `{{Auth::user()->email}}`,
                 firstname: `{{Auth::user()->name}}`,
-                amount: `{{$plans_map[1] * 100}}` ,
+                amount: `{{count($plans_map)>0?$plans_map[1] * 100:0*100}}` ,
                 callback: response => {
                     if(response.status === 'success'){
                         // send a post request to create a subscription for the user and log the payment

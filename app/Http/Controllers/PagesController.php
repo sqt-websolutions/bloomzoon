@@ -8,6 +8,7 @@ use App\Category;
 use App\FoodMenu;
 use App\Grocery;
 use App\Http\Controllers\CrudResourceController;
+use App\Http\Requests\Review;
 use App\Manufacturer;
 use App\Product;
 use App\User;
@@ -38,11 +39,12 @@ class PagesController extends Controller
     }
 
     public function get_page_view(Request $request, $page_name = 'index', $directory = 'frontend'){
+        
         $query = $request->query();
         $this->with_map = [
             'index' => static function(){
                 return [
-                    'products' =>  DB::table('categories')->leftJoin('products', 'categories.id', '=', 'products.category_id')->get(),
+                    'products' =>  Product::all(),
                     'vendors' =>  Vendor::all(),
                     'manufacturers' => DB::table('users')->where('account_type', '=', 'manufacturer')->get(),
                     'adverts' => Advert::all(),
@@ -63,19 +65,20 @@ class PagesController extends Controller
                 ];
             },
         ];
-
+        
         $view = $directory .'.'.'.'. $page_name;
+    
         $current_user = Auth::user();
-
+        
         $view_callback_map = [
-
+            
           'frontend' => function () use($view, $page_name, $current_user) {
-
+            
             if(view()->exists($view)){
                return view($view)
-                       ->with( !empty($this->with_map[$page_name]) ? $this->with_map[$page_name]() : [] );
+                       ->with(!empty($this->with_map[$page_name]) ? $this->with_map[$page_name]() : [] );
             }
-              if( $current_user && $view = view()->exists('dashboard.'. $current_user->account_type . '.' .$page_name)) {
+              if($current_user && $view = view()->exists('dashboard.'. $current_user->account_type . '.' .$page_name)) {
                   return view('dashboard.'. $current_user->account_type . '.' .$page_name);
               }
               if(!$current_user && view()->exists($view)){
@@ -91,7 +94,6 @@ class PagesController extends Controller
               }
 
               return view('frontend.login');
-
 
           },
             'category' =>  function ()use($directory){

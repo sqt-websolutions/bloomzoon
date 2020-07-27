@@ -2,6 +2,7 @@
 @section('page_title')
     Sub Admin Dashboard
 @endsection
+
         @section('content')
         <div class="col-md-10">
             <div class="row mb-5 mt-5">
@@ -17,11 +18,15 @@
                         </div>
                         <div class="form-group">
                             <label for="name" style="color: #02499B;"><strong>Upload User Picture</strong></label>
-                            <input style="border: 2px solid #02499B ;color: #02499B;" name="profile_pic_url" id="name" class="form-control" type="file" placeholder="Input User ID">
+                            <input style="border: 2px solid #02499B ;color: #02499B;" name="profile_pic_url" id="profile_pic_url" class="form-control" type="file" placeholder="Input User ID">
                         </div>
                         <div class="form-group">
                             <label for="name" style="color: #02499B;"><strong>Full Name</strong></label>
-                            <input style="border: 2px solid #02499B ;color: #02499B;" id="name" name="name" class="form-control" type="text" placeholder="Your full name">
+                            <input style="border: 2px solid #02499B ;color: #02499B;" id="name" name="name" class="form-control" type="text" placeholder="Input full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" style="color: #02499B;"><strong>Company Name(Optional)</strong></label>
+                            <input style="border: 2px solid #02499B ;color: #02499B;" id="company_name" name="company_name" class="form-control" type="text" placeholder="Input company name">
                         </div>
                         <div class="form-group">
                             <label for="account" style="color: #02499B;"><strong>Account Type</strong></label>
@@ -29,8 +34,10 @@
                                <option value="manufacturer">Manufacturer</option>
                                <option value="seller">Seller</option>
                                <option value="buyer">Buyer</option>
-                               <option value="networking-agent">Networking Agent</option>
-                               <option value="professional-service">Professional Service</option>
+                               <option value="networkingAgent">Networking Agent</option>
+                               <option value="professionalService">Professional Service</option> 
+                               <option value="shopper">Shopper</option> 
+                               <option value="grocery">Fast Food Groceries</option> 
                             </select>
                         </div>
 

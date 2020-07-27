@@ -44,9 +44,13 @@
 		</div>
 	</div>
 @endsection
+@php
+$redirect = strpos(url()->previous(),'product-details') == true?url()->previous():'/home';
+@endphp
 
 @push('scripts')
     <script>
+		
         FormHandler('loginForm', {
             requestUrl: '/auth/login/web',
             cb: response => {
@@ -57,7 +61,7 @@
                         icon: 'success',
                         button: 'Proceed to dashboard'
                     }).then(() => {
-                        window.location.href = '/home'
+                        window.location.href = '<?= $redirect ?>'
                     })
                 }
 

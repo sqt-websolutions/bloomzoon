@@ -15,10 +15,11 @@ class CreateBuyersTable extends Migration
     {
         Schema::create('buyer', function (Blueprint $table) {
             $table->id();
+            $table->string('company_name');
             $table->unsignedInteger('user_id');
-            $table->string('location');
-            $table->integer('total_orders');
-            $table->string('last_login');
+            $table->string('location')->nullable();
+            $table->integer('total_orders')->nullable();
+            $table->string('last_login')->nullable();
             $table->timestamps();
         });
     }

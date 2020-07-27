@@ -14,4 +14,8 @@ class Product extends Model
     public function getCategoryIdAttribute($Id){
         return Category::find($Id);
     }
+
+    public function reviews(){
+        return $this->hasMany('App\Review','product_id','id');
+    }
 }

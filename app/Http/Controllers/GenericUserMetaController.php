@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User;
 use Illuminate\Http\Request;
+use \App\User as DbUser;
 
 class GenericUserMetaController extends Controller
 {
@@ -15,16 +16,15 @@ class GenericUserMetaController extends Controller
     {
 
             $joins_arr = [
-//                'has_Many_Sale',
-//                'has_Many_Order',
-//                'has_Many_Product',
-//                'has_Many_PaymentRequest',
-//                'has_Many_Notification',
-//                'has_Many_Message',
-//                'has_Many_Review',
+               'has_Many_Sale',
+            //    'has_Many_Order',
+               'has_Many_Product',
+               'has_Many_PaymentRequest',
+               'has_Many_Notification',
+               'has_Many_Message',
+               'has_Many_Review',
                 'has_One_User',
                 'has_Many_Purchase',
-                'has_Many_Order',
                 'has_Many_Point',
                 'has_One_User',
                 'has_One_Seller',
@@ -41,8 +41,8 @@ class GenericUserMetaController extends Controller
                 'has_Many_Feedback',
                 'has_One_Wallet',
                 'has_One_Vendor',
+                'has_One_Manufacturer',
                 'total_sales',
-                'total_orders',
                 'total_products',
                 'total_paymentRequests',
                 'total_messages',
@@ -56,12 +56,12 @@ class GenericUserMetaController extends Controller
 
         $foreign_keys = [
             'User' => 'id',
-            'Order' => 'user_id',
             'Sale' => 'seller_id',
-            'PaymentRequest' => 'seller_id'
+            'PaymentRequest' => 'seller_id',
+            
         ];
 
-        $entity_result = \App\User::find($id);
+        $entity_result = DbUser::find($id);
 
         $metas_arr =  $joins_arr ; //$relation_map[$entity]['metas'];
         $meta_data = [];
@@ -76,6 +76,7 @@ class GenericUserMetaController extends Controller
                 $meta_data[$meta] = count($meta_data[$model_name]);
             }
         }
+        
         return response()->json($meta_data);
     }
 }

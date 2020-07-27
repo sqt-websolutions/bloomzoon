@@ -40,6 +40,38 @@
 @endsection
 @push('scripts')
     <script>
+ document.getElementById('verified').value = new Date().getTime();
+
+$("#form-submit").click(function(e) {
+    e.preventDefault();
+    let data = $('#createSubAdminForm').serialize();
+    $.ajax({
+        type: 'POST',
+        url: '/api/v1/crud/messages',
+        data: data,
+
+        success: function(data) {
+            return swal({
+                        title: 'Success!',
+                        text: 'Your support request has been sent, admin will reply shortly',
+                        icon: 'success',
+                    }).then( () => {
+                        window.location.href ='/messages';
+                    })
+        },
+        error: function(data) {
+            console.log(data.responseJSON)
+            return swal({
+                title: 'Error!',
+                text: 'We had error creating the account.Please try again -',
+                icon: 'error',
+                button: 'Try Again'
+            });
+        }
+
+    });
+});
+
         FormHandler('issueForm', {
             requestType: 'POST',
             requestUrl: '/api/v1/crud/messages',

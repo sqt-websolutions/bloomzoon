@@ -22,7 +22,6 @@ class CreateFoodMenusTable extends Migration
             $table->mediumText('description');
             $table->integer('currency');
             $table->integer('amount');
-            $table->integer('menu_type');
             $table->timestamps();
 
         });

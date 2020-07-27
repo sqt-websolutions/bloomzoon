@@ -6,6 +6,7 @@
 @endsection
 
         @section('content')
+        
         <div class="col-md-10">
                 <div class="row col-md-12 mb-4">
                     <div class="col-md-9">
@@ -15,6 +16,7 @@
                                 <option selected="">Sort</option>
                                 <option>New</option>
                                 <option>Old</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -39,6 +41,7 @@
                     </div>
                 </div>
                 <div class="row col-md-12">
+                
                     <div class="card m-0 p-0" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">
                         <div class="row p-5 ml-5 mr-5" style="border-bottom: 1px solid #ddd;">
                             <a href="message-chat">

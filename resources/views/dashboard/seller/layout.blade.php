@@ -98,7 +98,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-sm-2 col-2 text-white text-center" style="background-color: #ffffff; border-bottom: solid 1px #f2f2f2;">
-                    <img class="logo" src="seller_asset/img/bloomzon.png" alt="logo" width="80" height="auto">
+                   <a href="/"> <img class="logo" src="seller_asset/img/bloomzon.png" alt="logo" width="80" height="auto"></a>
                 </div>
                 <div class="col-lg-7 p-2 text-white">
                 </div>
@@ -165,6 +165,12 @@
         @yield('content')
     </div>
 </div>
+
+<!--footer-area end-->
+<script src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
+<!-- modernizr js -->
+<script src="{{asset('assets/js/vendor/modernizr-3.6.0.min.js')}}"></script>
+<!-- jquery-3.3.1 version -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
